@@ -1,0 +1,50 @@
+# Vercel Web Analytics Implementation
+
+## Summary
+Successfully implemented Vercel Web Analytics for this static HTML greeting card project.
+
+## Changes Made
+
+### Modified Files:
+- **greeting-card/index.html** - Added Vercel Web Analytics script tags
+
+## Implementation Details
+
+Since this is a **static HTML project** (not a framework-based application), I followed the official Vercel documentation for HTML/static sites implementation.
+
+### What was added:
+1. **Analytics initialization script** - Added `window.va` function to queue analytics calls before the script loads
+2. **CDN script tag** - Added the deferred Vercel Analytics script from `https://cdn.vercel-insights.com/v1/script.js`
+
+The implementation was added to the `<head>` section of the HTML file, immediately after the `<title>` tag, following best practices for loading analytics scripts.
+
+## Documentation Reference
+- Fetched latest instructions from: https://vercel.com/docs/analytics/quickstart
+- Implementation follows the official HTML/static site method described in the Vercel documentation
+
+## Code Added
+```html
+<!-- Vercel Web Analytics -->
+<script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+```
+
+## Notes
+- No package manager installation was required for this static HTML project
+- The analytics will automatically start tracking page views once deployed to Vercel
+- The `defer` attribute ensures the script doesn't block page rendering
+- The initialization script allows for potential future configuration via the `window.va()` API
+
+## Testing
+- ✅ HTML file validated and serves correctly (HTTP 200)
+- ✅ Script tags properly inserted with correct syntax
+- ✅ No existing functionality disrupted
+- ✅ File structure and formatting preserved
+
+## Next Steps
+After deployment to Vercel:
+1. The analytics will automatically begin collecting data
+2. View analytics in the Vercel dashboard under your project's Analytics tab
+3. Monitor the Network tab for requests to `/_vercel/insights/view` to confirm data collection
